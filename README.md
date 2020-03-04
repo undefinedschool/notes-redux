@@ -14,8 +14,8 @@
 
 ## Contenido
 
-- [Intro]()
-- [Inmutabilidad]()
+- [Intro](https://github.com/undefinedschool/redux/blob/master/README.md#intro)
+- [Inmutabilidad](https://github.com/undefinedschool/redux/blob/master/README.md#inmutabilidad)
 
 ---
 
@@ -31,7 +31,13 @@ Aparte de este gran objeto, **Redux nos garantiza que este objeto es [_inmutable
 
 > 👉 En este sentido, Redux se comporta como una _función pura_, según el paradigma funcional.
 
+[↑ Ir al inicio](https://github.com/undefinedschool/redux/blob/master/README.md#contenido)
+
 ## Inmutabilidad
+
+(WIP)
+
+[↑ Ir al inicio](https://github.com/undefinedschool/redux/blob/master/README.md#contenido)
 
 ---
 
