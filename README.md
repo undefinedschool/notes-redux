@@ -55,6 +55,6 @@ Porque aparte de este gran objeto, **Redux nos garantiza que este objeto es [_in
 
 ---
 
-<sup id="cite_note-1"><a href="#cite_ref-1">1</a></sup> Si bien se popularizó mucho su uso junto con React, Redux puede utilizarse con Angular, Vue, Svelte o cualquier otro framework o librería de frontend que maneje el concepto de [_state_](https://github.com/undefinedschool/notes-react-basics#state).
+<sup id="cite_note-1"><a href="#cite_ref-1">1</a></sup> Si bien se popularizó mucho su uso junto con React, Redux puede utilizarse con Angular, Vue, Svelte o cualquier otro framework o librería de frontend que maneje el concepto de [_state_](https://github.com/undefinedschool/notes-react-basics#state) (incluso con [HTML/JS vanilla](https://www.youtube.com/watch?v=SV_reBvGKPE)!).
 
 <sup id="cite_note-2"><a href="#cite_ref-2">2</a></sup> Es por esto último que se define como _un contenedor predecible del estado de aplicaciones JavaScript._
