@@ -44,11 +44,13 @@ Lo que hace básicamente Redux es proveernos de **un gran objeto que contiene el
 
 Recordemos que React ya nos provee una forma de manejar el [_state_](https://github.com/undefinedschool/notes-react-basics#state) de cada componente, de forma local.
 
-**De hecho, la mayoría de las veces, [probablemente no necesitemos una solución como Redux](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)**. Qué beneficio nos trae entonces utilizar Redux por sobre el _local state_?
+**De hecho, la mayoría de las veces, [probablemente no necesitemos una solución como Redux](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)**. 
 
-_Levantar_ el _state_ en el árbol de [componentes](https://github.com/undefinedschool/notes-react-basics#react-component) funciona en casos simples, pero en aplicaciones complejas podemos terminar encontrándonos moviendo el state continuamente entre componentes, a través de las [_props_](https://github.com/undefinedschool/notes-react-basics#props). 
+Qué beneficio nos trae entonces utilizar Redux por sobre el _local state_?
 
-Un mejor enfoque podría ser utilizar un _store_ externo, global (un gran objeto que funcione algo así como una variable global, al que cualquier componente pueda acceder) y esto es lo que propone Redux.
+_Levantar_ el _state_ en el árbol de [componentes](https://github.com/undefinedschool/notes-react-basics#react-component) funciona en casos simples, pero en aplicaciones complejas podemos terminar encontrándonos moviendo el state continuamente entre componentes, a través de las [_props_](https://github.com/undefinedschool/notes-react-basics#props), dificultando el mantenimiento y seguimiento del flujo de datos en nuestra aplicación. 
+
+**Un mejor enfoque podría ser utilizar un _store_ externo, global** (un gran objeto que funcione algo así como una variable global, al que cualquier componente pueda acceder, con la diferencia de que en este caso, es [_inmutable_](https://github.com/undefinedschool/notes-redux#inmutabilidad)) y esto es justamente lo que propone Redux.
 
 ## Conceptos
 
