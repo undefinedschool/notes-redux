@@ -15,9 +15,10 @@
 ## Contenido
 
 - [Intro](https://github.com/undefinedschool/redux#intro)
-- [Inmutabilidad]()
+- [Inmutabilidad](https://github.com/undefinedschool/redux#inmutabilidad)
 - [Redux vs Context API]()
 - [Redux vs Hooks]()
+- [Redux Toolkit]()
 
 ---
 
@@ -29,7 +30,7 @@ Lo que hace básicamente Redux es proveernos de **un gran objeto que contiene el
 
 Y por qué no utilizamos simplemente un objeto común, el _state_ del componente principal y ya?
 
-Porque aparte de este gran objeto, **Redux nos garantiza que este objeto es [_inmutable_](), es decir, no va a cambiar**, ya que no modifica el _state_ actual cuando se produce algún cambio, sino que retorna una nueva copia de este objeto, con los cambios requeridos, haciendo que el _state_ de nuestra aplicación sea más fácil de manejar, entender, debuggear y predecible<sup id="cite_ref-2"><a href="#cite_note-2">[2]</a></sup>. 
+Porque aparte de este gran objeto, **Redux nos garantiza que este objeto es [_inmutable_](https://github.com/undefinedschool/redux#inmutabilidad), es decir, no va a cambiar**, ya que no modifica el _state_ actual cuando se produce algún cambio, sino que retorna una nueva copia de este objeto, con los cambios requeridos, haciendo que el _state_ de nuestra aplicación sea más fácil de manejar, entender, debuggear y predecible<sup id="cite_ref-2"><a href="#cite_note-2">[2]</a></sup><sup id="cite_ref-3"><a href="#cite_note-3">[3]</a></sup>. 
 
 > 👉 En este sentido, Redux se comporta como una _función pura_, según el paradigma funcional.
 
@@ -53,8 +54,18 @@ Porque aparte de este gran objeto, **Redux nos garantiza que este objeto es [_in
 
 [↑ Ir al inicio](https://github.com/undefinedschool/redux#contenido)
 
+## Redux Toolkit
+
+(WIP)
+
+https://redux-toolkit.js.org/
+
+[↑ Ir al inicio](https://github.com/undefinedschool/redux#contenido)
+
 ---
 
 <sup id="cite_note-1"><a href="#cite_ref-1">1</a></sup> Si bien se popularizó mucho su uso junto con React, Redux puede utilizarse con Angular, Vue, Svelte o cualquier otro framework o librería de frontend que maneje el concepto de [_state_](https://github.com/undefinedschool/notes-react-basics#state) (incluso con [HTML/JS vanilla](https://www.youtube.com/watch?v=SV_reBvGKPE)!).
 
-<sup id="cite_note-2"><a href="#cite_ref-2">2</a></sup> Es por esto último que se define como _un contenedor predecible del estado de aplicaciones JavaScript._
+<sup id="cite_note-2"><a href="#cite_ref-2">2</a></sup> Si estamos usando React, es conveniente utilizar [_React Redux_](https://react-redux.js.org/) para simplificar la integración.
+
+<sup id="cite_note-3"><a href="#cite_ref-3">3</a></sup> Es por esto último que se define como _un contenedor predecible del estado de aplicaciones JavaScript._
