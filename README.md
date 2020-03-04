@@ -14,8 +14,10 @@
 
 ## Contenido
 
-- [Intro](https://github.com/undefinedschool/redux/blob/master/README.md#intro)
-- [Inmutabilidad](https://github.com/undefinedschool/redux/blob/master/README.md#inmutabilidad)
+- [Intro](https://github.com/undefinedschool/redux#intro)
+- [Inmutabilidad]()
+- [Redux vs Context API]()
+- [Redux vs Hooks]()
 
 ---
 
@@ -31,13 +33,25 @@ Aparte de este gran objeto, **Redux nos garantiza que este objeto es [_inmutable
 
 > 👉 En este sentido, Redux se comporta como una _función pura_, según el paradigma funcional.
 
-[↑ Ir al inicio](https://github.com/undefinedschool/redux/blob/master/README.md#contenido)
+[↑ Ir al inicio](https://github.com/undefinedschool/redux#contenido)
 
 ## Inmutabilidad
 
 (WIP)
 
-[↑ Ir al inicio](https://github.com/undefinedschool/redux/blob/master/README.md#contenido)
+[↑ Ir al inicio](https://github.com/undefinedschool/redux#contenido)
+
+## Redux vs Context API
+
+(WIP)
+
+[↑ Ir al inicio](https://github.com/undefinedschool/redux#contenido)
+
+## Redux vs Hooks
+
+(WIP)
+
+[↑ Ir al inicio](https://github.com/undefinedschool/redux#contenido)
 
 ---
 
