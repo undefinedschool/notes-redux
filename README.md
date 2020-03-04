@@ -21,13 +21,13 @@
 
 ## Intro
 
-[Redux](https://redux.js.org/) es una librería (biblioteca) que funciona como [_State_](https://github.com/undefinedschool/notes-react-basics#state) _Container_ para nuestras aplicaciones, independientemente del framework o librería que utilicemos para manejar la _vista_ de nuestra aplicación (por ejemplo React).
+[Redux](https://redux.js.org/) es una librería (biblioteca) que funciona como [_State_](https://github.com/undefinedschool/notes-react-basics#state) _Container_ para nuestras aplicaciones, independientemente del framework o librería que utilicemos para manejar la _vista_ de nuestra aplicación<sup id="cite_ref-1"><a href="#cite_note-1">[1]</a></sup>.
 
-Lo que hace básicamente Redux es proveernos de **un gran objeto que contiene el estado de cada componente de nuestra aplicación**, al cual cada componente puede acceder.
+Lo que hace básicamente Redux es proveernos de **un gran objeto que contiene el estado de cada componente de nuestra aplicación** (nos permite lidiar con el estado de toda la aplicación de una forma centralizada), al cual cada componente puede acceder.
 
 Y por qué no utilizamos simplemente un objeto común, el _state_ del componente principal y ya?
 
-Aparte de este gran objeto, **Redux nos garantiza que este objeto es [_inmutable_](), es decir, no va a cambiar**, ya que no modifica el _state_ actual cuando se produce algún cambio, sino que retorna una nueva copia de este objeto, con los cambios requeridos, haciendo que nuestra aplicación sea más fácil de entender, debuggear y predecible<sup id="cite_ref-1"><a href="#cite_note-1">[1]</a></sup>. 
+Aparte de este gran objeto, **Redux nos garantiza que este objeto es [_inmutable_](), es decir, no va a cambiar**, ya que no modifica el _state_ actual cuando se produce algún cambio, sino que retorna una nueva copia de este objeto, con los cambios requeridos, haciendo que nuestra aplicación sea más fácil de entender, debuggear y predecible<sup id="cite_ref-2"><a href="#cite_note-2">[2]</a></sup>. 
 
 > 👉 En este sentido, Redux se comporta como una _función pura_, según el paradigma funcional.
 
@@ -41,4 +41,6 @@ Aparte de este gran objeto, **Redux nos garantiza que este objeto es [_inmutable
 
 ---
 
-<sup id="cite_note-1"><a href="#cite_ref-1">1</a></sup>Es por esto último que se define como _un contenedor predecible del estado de aplicaciones JavaScript._
+<sup id="cite_note-1"><a href="#cite_ref-1">1</a></sup> Si bien se popularizó mucho su uso junto con React, Redux puede utilizarse con Angular, Vue, Svelte o cualquier otro framework o librería de frontend que maneje el concepto de [_state_](https://github.com/undefinedschool/notes-react-basics#state)
+
+<sup id="cite_note-2"><a href="#cite_ref-2">2</a></sup> Es por esto último que se define como _un contenedor predecible del estado de aplicaciones JavaScript._
