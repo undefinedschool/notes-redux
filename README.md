@@ -16,6 +16,7 @@
 
 - [Intro](https://github.com/undefinedschool/notes-redux#intro)
 - [Por qué usar Redux?](https://github.com/undefinedschool/notes-redux#por-qu%C3%A9-usar-redux)
+  - [Beneficios](https://github.com/undefinedschool/notes-redux#beneficios)
 - [Conceptos](https://github.com/undefinedschool/notes-redux#conceptos)
   - [Inmutabilidad](https://github.com/undefinedschool/notes-redux#inmutabilidad)
   - [Actions](https://github.com/undefinedschool/notes-redux#actions)
@@ -63,6 +64,20 @@ _Levantar_ el _state_ en el árbol de [componentes](https://github.com/undefined
 **Un mejor enfoque podría ser utilizar un _store_ externo, global** (un gran objeto que funcione algo así como una variable global, al que cualquier componente pueda acceder, con la diferencia de que en este caso, es [_inmutable_](https://github.com/undefinedschool/notes-redux#inmutabilidad)) y esto es justamente lo que propone Redux.
 
 Por lo tanto, sólo deberíamos usar Redux si manejar el state local de los componentes de React se vuelve lo suficientemente tedioso<sup id="cite_ref-4"><a href="#cite_note-4">[4]</a></sup>. 
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+### Beneficios
+
+Algunas de las ventajas que implica utilizar Redux incluyen
+
+- manejo centralizado del _state_.
+- flujo de datos unidireccional, transparente y predecible.
+- más fácil de debuggear.
+- más fácil de testear.
+- posibilidad de rehacer/deshacer cambios y movernos entre diferentes _states_ a través del tiempo (_time travelling_).
+- _state_ inmutable.
+- ecosistema bastante desarrollado y maduro (mucha documentación, extensiones, herramientas de desarrollo, etc).
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
