@@ -317,7 +317,7 @@ Algunas de las acciones de _time travelling_ que podemos realizar incluyen
 
 (WIP)
 
-> 👉 **Ver [Redux Toolkit](https://redux-toolkit.js.org/)
+> 👉 **Ver [Redux Toolkit](https://redux-toolkit.js.org/)**.
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
