@@ -118,7 +118,7 @@ Ejemplo con más propiedades
 
 #### Utilizar _Action_ `types` constantes
 
-Un _Action_ `type` puede definirse como un simple _string_, pero se recomienda utilizar constantes y modularizarlos.
+Un _Action_ `type` puede definirse como un simple _string_, pero se recomienda utilizar constantes y modularizarlos, para de esta forma poder reutilizarlos y evitar errores de tipeo.
 
 ```js
 const ADD_ITEM = 'ADD_ITEM';
