@@ -29,6 +29,7 @@
     - [Escuchando cambios en el _state_](https://github.com/undefinedschool/notes-redux#escuchando-cambios-en-el-state)
 - [Flujo de datos unidireccional (one-way data flow)](https://github.com/undefinedschool/notes-redux#flujo-de-datos-unidireccional-one-way-data-flow)
 - [Redux Developer Tools](https://github.com/undefinedschool/notes-redux#redux-developer-tools)
+- [React Redux](https://github.com/undefinedschool/notes-redux#react-redux)
 - [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
 - [Testing](https://github.com/undefinedschool/notes-redux#testing)
 - [Redux vs Context API](https://github.com/undefinedschool/notes-redux#redux-vs-context-api)
@@ -310,6 +311,12 @@ Algunas de las acciones de _time travelling_ que podemos realizar incluyen
 - `commit`: toma cualquier cambio que le hagamos al _state_ y lo setea como el estado inicial. Podemos hacer esto tantas veces como querramos.
 - `revert`: retroceder a un estado anterior (un commit previo).
 - `reset`: deshacer todos los commits y volver al _state_ original.
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+## React Redux
+
+(WIP)
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
