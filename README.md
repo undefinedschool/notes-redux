@@ -22,12 +22,15 @@
     - [Utilizar _Action_ `types` constantes](https://github.com/undefinedschool/notes-redux#utilizar-action-types-constantes)
     - [Action creators](https://github.com/undefinedschool/notes-redux#action-creators)
   - [Reducer](https://github.com/undefinedschool/notes-redux#reducer)
+    - [_Reducers_ y _Actions_]()
   - [Store](https://github.com/undefinedschool/notes-redux#store)
     - [Accediendo al _state_](https://github.com/undefinedschool/notes-redux#accediendo-al-state)
     - [Actualizando el _state_](https://github.com/undefinedschool/notes-redux#actualizando-el-state)
     - [Escuchando cambios en el _state_](https://github.com/undefinedschool/notes-redux#escuchando-cambios-en-el-state)
-- [Flujo de datos unidireccional (one-way data flow)](https://github.com/undefinedschool/notes-redux#flujo-de-datos-unidireccional-one-way-data-flow)  
+- [Flujo de datos unidireccional (one-way data flow)](https://github.com/undefinedschool/notes-redux#flujo-de-datos-unidireccional-one-way-data-flow)
+- [Redux Developer Tools]()
 - [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
+- [Testing](https://github.com/undefinedschool/notes-redux#testing)
 - [Redux vs Context API](https://github.com/undefinedschool/notes-redux#redux-vs-context-api)
 - [Redux vs Hooks](https://github.com/undefinedschool/notes-redux#redux-vs-hooks)
 
@@ -92,6 +95,8 @@ Ejemplo con más propiedades
 };
 ```
 
+> 👉 **En Redux, la única forma de actualizar el _state_ es disparando una acción**, la cual se pasa al [_reducer_](https://github.com/undefinedschool/notes-redux#reducer), que se encargará de generar un nuevo _state_.
+
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
 #### Utilizar _Action_ `types` constantes
@@ -116,7 +121,7 @@ import { ADD_ITEM, REMOVE_ITEM } from './actions';
 
 #### Action creators
 
-Son funciones que crean [_Actions_](https://github.com/undefinedschool/notes-redux#actions) (por lo tanto siempre retornan un objeto).
+Son funciones que crean [_acciones_](https://github.com/undefinedschool/notes-redux#actions) (por lo tanto siempre retornan un objeto).
 
 ```js
 function addItem(t) {
@@ -143,26 +148,49 @@ function dispatchAddItem(i) {
 dispatchAddItem('Water bottle');
 ```
 
+> 👉 **Estas funciones van a _despachar_ acciones cada vez que querramos realizar cambios al _state_**.
+
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
 ### Reducer
 
 **Cuando una [acción](https://github.com/undefinedschool/notes-redux#actions) se dispara, el _state_ de la aplicación debe cambiar y son los _reducers_ quienes se encargan de realizar esta tarea**.
 
-Un _reducer_ es una [_función pura_](https://ericelliottjs.com/premium-content/lesson-pure-functions) que calcula el siguiente _state_ basado en el estado previo y la acción despachada.
+**Un _reducer_ es una [_función pura_](https://ericelliottjs.com/premium-content/lesson-pure-functions) que recibe un _state_ (el actual) y una acción y retorna un nuevo estado, basándose únicamente en estos parámetros**. Por lo tanto, si no hay acción, retornamos el mismo estado.
 
 ![Reducer](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-04.svg)
 
-> 👉 **Una _función pura_ recibe un input y retorna un output generado a partir de este input, sin modificarlo ni depender de ningún otro factor. Un _reducer_ returna un objeto (_state_) nuevo que reemplaza al anterior**.
+> 👉 **En una _función pura_, el output depende únicamente del input y dado el mismo input, genera el mismo output**, sin modificarlo ni depender de ningún otro factor. Además, **no tiene _side-effects_**, es decir, la función no modifica el entorno externo de ninguna forma. Esto hace que el comportamiento de la función sea _predecible_ y por lo tanto, más fácil de razonar, debuggear y testear.
 
-Un _reducer_ es una función pura, por lo tanto no debería
+**Un _reducer_ retorna un objeto (_state_) nuevo que reemplaza al anterior, basándose únicamente en el _state_ previo y las _actions_ generadas**. 
+
+⚠️ Al tratarse un _reducer_ de una función pura, no debería
 
 - _mutar_ (modificar) sus argumentos.
 - _mutar_ el estado (debe crear uno nuevo).
 - generar algún tipo de _side-effect_.
 - invocar funciones que no sean puras, es decir, funciones cuyo output depende no sólo del input sino también de otros factores.
 
-> 👉 **Dado que el estado de una aplicación compleja puede ser, valga la redundancia, complejo, suele haber múltiples _reducers_, para diferentes tipos de acciones.**
+> 👉 **Dado que el estado de una aplicación compleja puede ser, valga la redundancia, complejo, suele haber múltiples _reducers_, para diferentes tipos de acciones y un _reducer principal_ (root) que los combina.** Para hacer esto último, Redux nos provee la función [`combineReducers`](https://redux.js.org/api/combinereducers/).
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+#### _Reducers_ y _Actions_
+
+Los _reducers_ no se llaman directamente, sino que primero debe dispararse una [acción](https://github.com/undefinedschool/notes-redux#actions), que va a ser interceptada y procesada por un reducer.
+
+**En Redux, las acciones son simplemente instrucciones que le dicen al reducer cómo modificar el estado actual**.
+
+Estas acciones vienen en forma de objeto, siempre con una propiedad `type` (que por convención es un _string_ en UPPER_SNAKE_CASE) y un _payload_ opcional, para indicar nuevos datos que queremos agregar al _state_.
+
+Por ejemplo, si queremos indicarle al _reducer_ que agregue a `'Jimmy'` a una lista de nombres del _state_, podemos hacer
+
+```js
+{
+  type: 'ADD_NAME',
+  payload: 'Jimmy'
+}
+```
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
@@ -174,15 +202,31 @@ El _Store_ es un objeto de JavaScript con las siguientes características:
 - permite acceder (leer) el _state_ a través del método `getState()`.
 - permite actualizar el _state_ a través del método `dispatch()`.
 - permite suscribir (o cancelar la suscripción) a cambios del _state_ a través de un _listener_, con el método `subscribe()`.
-- Hay 1 _store_ (único) por aplicación.
+- hay 1 solo _store_ por aplicación.
 
-Por ejemplo, si queremos crear un _store_ para `listManager`, podemos hacer
+
+Ejemplo de Store:
 
 ```js
 import { createStore } from 'redux';
-import listManager from './reducers';
 
-const store = createStore(listManager);
+const store = createStore(firstReducer);
+
+// we can now dispatch actions and get state from the store
+
+const initialState = store.getState();
+
+console.log(initialState); // this will be an array
+
+store.dispatch(addName('Elie'));
+store.dispatch(addName('Matt'));
+store.dispatch(addName('Tim'));
+
+console.log(store.getState()); // this object will have an array with three values
+
+store.dispatch(removeName('Elie'));
+
+console.log(store.getState()); // this array will have 2 values
 ```
 
 Podemos inicializar el _store_ con datos pre-existentes (por ejemplo que vienen del backend), pasándole un parámetro extra
@@ -229,9 +273,22 @@ Al igual que en React, en Redux [el flujo de datos es siempre _unidireccional_](
 
 ![Redux Flow](https://www.datocms-assets.com/639/1556116473-1.png)
 
-1. Llamamos al método `dispatch()` del _Store_, pasándole una acción. 
-2. El Store se encarga de pasar la acción al _reducer_, generando así el nuevo estado.
-3. El Store actualiza el _state_ y le avisa a todos los _listeners_ suscriptos.
+El flujo o _lifecycle_ en Redux entonces es el siguiente:
+
+1. Invocamos el método `dispatch()` del _Store_, pasándole una acción que representa un cambio en el _state_: `store.dispatch(action)`. 
+2. El Store se encarga de pasarle la acción al _reducer_ (e invocar a este último), generando así el nuevo estado.
+3. Puede haber un _Reducer_ principal que combine el output de múltiples funciones reducers.
+4. El Store actualiza el _state_ y le avisa a todos los _listeners_ suscriptos.
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+## Redux Developer Tools
+
+Tener un único store inmutable nos permite acceder a features como _time traveling_, _hot module reloading_ y simplifica el debugging. Como el _Store_ esta al tanto de las acciones que se disparan (_dispatch_), podemos ver los cambios en el _state_ y revertirlos! No solo eso, tambien podemos reproducir y repetir series de acciones que suceden en nuestra aplicacion.
+
+> 👉 Descargar [Redux Developer Tools para Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+
+> 👉 Descargar [Redux Developer Tools para Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/)
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
@@ -240,6 +297,14 @@ Al igual que en React, en Redux [el flujo de datos es siempre _unidireccional_](
 (WIP)
 
 > 👉 **Ver [Redux Toolkit](https://redux-toolkit.js.org/)
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+## Testing
+
+[notas aparte]
+
+(WIP)
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
