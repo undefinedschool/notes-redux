@@ -180,7 +180,7 @@ dispatchAddItem('Water bottle');
 
 Los _reducers_ no se llaman directamente, sino que primero debe dispararse una [acción](https://github.com/undefinedschool/notes-redux#actions), que va a ser interceptada y procesada por un reducer.
 
-**En Redux, las acciones son simplemente instrucciones que le dicen al reducer cómo modificar el estado actual**.
+> 👉 **En Redux, las acciones son simplemente instrucciones que le dicen al _Reducer_ cómo modificar el estado actual**.
 
 Estas acciones vienen en forma de objeto, siempre con una propiedad `type` (que por convención es un _string_ en UPPER_SNAKE_CASE) y un _payload_ opcional, para indicar nuevos datos que queremos agregar al _state_.
 
