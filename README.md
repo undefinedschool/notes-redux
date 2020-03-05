@@ -177,7 +177,7 @@ dispatchAddItem('Water bottle');
 
 ![Reducer](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-04.svg)
 
-> 👉 **En una _función pura_, el output depende únicamente del input y dado el mismo input, genera el mismo output**, sin modificarlo ni depender de ningún otro factor. Además, **no tiene _side-effects_**, es decir, la función no modifica el entorno externo de ninguna forma. Esto hace que el comportamiento de la función sea _predecible_ y por lo tanto, más fácil de razonar, debuggear y testear.
+> 👉 **En una _función pura_, el output depende únicamente del input y dado el mismo input, genera el mismo output**, sin modificarlo ni depender de ningún otro factor. Además, **no tiene _side-effects_**, es decir, la función no modifica el entorno externo de ninguna forma (no muta los argumentos que recibe ni accede a variables por fuera de su scope). Esto hace que el comportamiento de la función sea _predecible_ y por lo tanto, más fácil de razonar, debuggear y testear.
 
 **Un _reducer_ retorna un objeto (_state_) nuevo que reemplaza al anterior, basándose únicamente en el _state_ previo y las _actions_ generadas**. 
 
