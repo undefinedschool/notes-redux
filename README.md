@@ -221,6 +221,7 @@ El _Store_ es un objeto de JavaScript con las siguientes características:
 - permite suscribir (o cancelar la suscripción) a cambios del _state_ a través de un _listener_, con el método `subscribe()`.
 - hay 1 solo _store_ por aplicación.
 
+> 👉 **Notar que _Store_ y _state_ no son lo mismo: el [_state_](https://github.com/undefinedschool/notes-react-basics#state) está conformado por los datos con los que opera nuestra aplicación, mientras que el _Store_ contiene al _state_ y nos provee de ciertos métodos para interactuar con este**.
 
 Ejemplo de Store:
 
