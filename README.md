@@ -22,13 +22,13 @@
     - [Utilizar _Action_ `types` constantes](https://github.com/undefinedschool/notes-redux#utilizar-action-types-constantes)
     - [Action creators](https://github.com/undefinedschool/notes-redux#action-creators)
   - [Reducer](https://github.com/undefinedschool/notes-redux#reducer)
-    - [_Reducers_ y _Actions_]()
+    - [_Reducers_ y _Actions_](https://github.com/undefinedschool/notes-redux#reducers-y-actions)
   - [Store](https://github.com/undefinedschool/notes-redux#store)
     - [Accediendo al _state_](https://github.com/undefinedschool/notes-redux#accediendo-al-state)
     - [Actualizando el _state_](https://github.com/undefinedschool/notes-redux#actualizando-el-state)
     - [Escuchando cambios en el _state_](https://github.com/undefinedschool/notes-redux#escuchando-cambios-en-el-state)
 - [Flujo de datos unidireccional (one-way data flow)](https://github.com/undefinedschool/notes-redux#flujo-de-datos-unidireccional-one-way-data-flow)
-- [Redux Developer Tools]()
+- [Redux Developer Tools](https://github.com/undefinedschool/notes-redux#redux-developer-tools)
 - [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
 - [Testing](https://github.com/undefinedschool/notes-redux#testing)
 - [Redux vs Context API](https://github.com/undefinedschool/notes-redux#redux-vs-context-api)
@@ -284,11 +284,32 @@ El flujo o _lifecycle_ en Redux entonces es el siguiente:
 
 ## Redux Developer Tools
 
-Tener un único store inmutable nos permite acceder a features como _time traveling_, _hot module reloading_ y simplifica el debugging. Como el _Store_ esta al tanto de las acciones que se disparan (_dispatch_), podemos ver los cambios en el _state_ y revertirlos! No solo eso, tambien podemos reproducir y repetir series de acciones que suceden en nuestra aplicacion.
+Tener un único store inmutable nos permite acceder a features como _time traveling_, _hot module reloading_ y simplifica el debugging. 
+
+Como el _Store_ está al tanto de las acciones que se disparan (por el _dispatch_), podemos ver los cambios en el _state_ y revertirlos (aka [_time travelling_](https://medium.com/the-web-tub/time-travel-in-react-redux-apps-using-the-redux-devtools-5e94eba5e7c0))! No sólo eso, también podemos reproducir y repetir series de acciones que suceden en nuestra aplicación, a través de las _Developer Tools_ para Redux.
 
 > 👉 Descargar [Redux Developer Tools para Chrome](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
 
 > 👉 Descargar [Redux Developer Tools para Firefox](https://addons.mozilla.org/en-US/firefox/addon/reduxdevtools/)
+
+Además de instalar la extensión, tenemos que agregar el siguiente código a nuestra aplicación
+
+```js
+import { createStore, compose } from 'redux';
+import rootReducer from './reducers';
+
+const store = createStore(rootReducer, compose(
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+));
+
+export default store;
+```
+
+Algunas de las acciones de _time travelling_ que podemos realizar incluyen
+
+- `commit`: toma cualquier cambio que le hagamos al _state_ y lo setea como el estado inicial. Podemos hacer esto tantas veces como querramos.
+- `revert`: retroceder a un estado anterior (un commit previo).
+- `reset`: deshacer todos los commits y volver al _state_ original.
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
