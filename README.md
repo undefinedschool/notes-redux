@@ -21,11 +21,13 @@
   - [Actions](https://github.com/undefinedschool/notes-redux#actions)
     - [Utilizar _Action_ `types` constantes]()
     - [Action creators]()
-    
-  - [Store](https://github.com/undefinedschool/notes-redux#store)
   - [Reducer](https://github.com/undefinedschool/notes-redux#reducer)
+  - [Store](https://github.com/undefinedschool/notes-redux#store)
+    - [Accediendo al _state_]()
+    - [Actualizando el _state_]()
+    - [Escuchando cambios en el _state_]()
   - [Dispatch](https://github.com/undefinedschool/notes-redux#dispatch)
-  
+- [Flujo de datos unidireccional (one-way data flow)]()  
 - [Redux vs Context API](https://github.com/undefinedschool/notes-redux#redux-vs-context-api)
 - [Redux vs Hooks](https://github.com/undefinedschool/notes-redux#redux-vs-hooks)
 - [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
@@ -58,6 +60,8 @@ _Levantar_ el _state_ en el árbol de [componentes](https://github.com/undefined
 
 Por lo tanto, sólo deberíamos usar Redux si manejar el state local de los componentes de React se vuelve lo suficientemente tedioso<sup id="cite_ref-4"><a href="#cite_note-4">[4]</a></sup>. 
 
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
 ## Conceptos
 
 ### Inmutabilidad
@@ -70,7 +74,7 @@ Decimos que **el _state_ es _inmutable_ porque se trata de un objeto de _sólo l
 
 ### Actions
 
-Una **_Action_ es un objeto JavaScript que describe un cambio con la información mínima necesaria ( es minimal)**.
+**Una _acción_ es un objeto JavaScript que describe un cambio y cuenta con la información mínima necesaria para representarlo (es minimal)**.
 
 El único requisito de este tipo de objetos es tener una propiedad `type`, cuyo valor suele ser un _string_.
 
@@ -83,7 +87,10 @@ Ejemplo sólo con `type`
 Ejemplo con más propiedades
 
 ```js
-{ type: 'SELECTED_USER', userId: 232 };
+{
+  type: 'SELECTED_USER', 
+  userId: 232 
+};
 ```
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
@@ -94,7 +101,10 @@ Un _Action_ `type` puede definirse como un simple _string_, pero se recomienda u
 
 ```js
 const ADD_ITEM = 'ADD_ITEM';
-const action = { type: ADD_ITEM, title: 'Third item' };
+const action = { 
+  type: ADD_ITEM, 
+  title: 'Third item' 
+};
 ```
 
 Ejemplo importando _Actions_
@@ -103,25 +113,126 @@ Ejemplo importando _Actions_
 import { ADD_ITEM, REMOVE_ITEM } from './actions';
 ```
 
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
 #### Action creators
 
-Son funciones que crean [_Actions_](https://github.com/undefinedschool/notes-redux#actions).
+Son funciones que crean [_Actions_](https://github.com/undefinedschool/notes-redux#actions) (por lo tanto siempre retornan un objeto).
 
-### Store
+```js
+function addItem(t) {
+  return { 
+    type: ADD_ITEM,     
+    title: t  
+  } 
+};
+```
 
-(WIP)
+Generalmente ejecutamos _Action creators_ junto con el _dispatch_
+
+```js
+dispatch(addItem('Water bottle'));
+```
+
+También pueden combinarse, definiendo un _Action dispatcher_
+
+```js
+function dispatchAddItem(i) {
+  dispatch(addItem(i));
+}
+
+dispatchAddItem('Water bottle');
+```
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
 ### Reducer
 
-(WIP)
+**Cuando una [acción](https://github.com/undefinedschool/notes-redux#actions) se dispara, el _state_ de la aplicación debe cambiar y son los _reducers_ quienes se encargan de realizar esta tarea**.
+
+Un _reducer_ es una [_función pura_](https://ericelliottjs.com/premium-content/lesson-pure-functions) que calcula el siguiente _state_ basado en el estado previo y la acción despachada.
+
+![Reducer](https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-04.svg)
+
+> 👉 **Una _función pura_ recibe un input y retorna un output generado a partir de este input, sin modificarlo ni depender de ningún otro factor. Un _reducer_ returna un objeto (_state_) nuevo que reemplaza al anterior**.
+
+Un _reducer_ es una función pura, por lo tanto no debería
+
+- _mutar_ (modificar) sus argumentos.
+- _mutar_ el estado (debe crear uno nuevo).
+- generar algún tipo de _side-effect_.
+- invocar funciones que no sean puras, es decir, funciones cuyo output depende no sólo del input sino también de otros factores.
+
+> 👉 **Dado que el estado de una aplicación compleja puede ser, valga la redundancia, complejo, suele haber múltiples _reducers_, para diferentes tipos de acciones.**
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+### Store
+
+El _Store_ es un objeto de JavaScript con las siguientes características:
+
+- contiene el _state_ (entero) de la aplicación.
+- permite acceder (leer) el _state_ a través del método `getState()`.
+- permite actualizar el _state_ a través del método `dispatch()`.
+- permite suscribir (o cancelar la suscripción) a cambios del _state_ a través de un _listener_, con el método `subscribe()`.
+- Hay 1 _store_ (único) por aplicación.
+
+Por ejemplo, si queremos crear un _store_ para `listManager`, podemos hacer
+
+```js
+import { createStore } from 'redux';
+import listManager from './reducers';
+
+const store = createStore(listManager);
+```
+
+Podemos inicializar el _store_ con datos pre-existentes (por ejemplo que vienen del backend), pasándole un parámetro extra
+
+```js
+const store = createStore(listManager, preexistingState);
+```
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+#### Accediendo al _state_
+
+```js
+store.getState();
+```
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+#### Actualizando el _state_
+
+```js
+store.dispatch(addItem('Something'));
+```
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+#### Escuchando cambios en el _state_
+
+```js
+const unsubscribe = store.subscribe(() => const newState = store.getState());
+```
+
+También podemos cancelar la suscripción
+
+```js
+unsubscribe();
+```
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
 ### Dispatch
 
 (WIP)
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+## Flujo de datos unidireccional (one-way data flow)
+
+Al igual que en React, en Redux [el flujo de datos es _unidireccional_](https://github.com/undefinedschool/notes-react-principles#flujo-de-datos-unidireccional-one-way-data-flow)
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
