@@ -19,18 +19,17 @@
 - [Conceptos](https://github.com/undefinedschool/notes-redux#conceptos)
   - [Inmutabilidad](https://github.com/undefinedschool/notes-redux#inmutabilidad)
   - [Actions](https://github.com/undefinedschool/notes-redux#actions)
-    - [Utilizar _Action_ `types` constantes]()
-    - [Action creators]()
+    - [Utilizar _Action_ `types` constantes](https://github.com/undefinedschool/notes-redux#utilizar-action-types-constantes)
+    - [Action creators](https://github.com/undefinedschool/notes-redux#action-creators)
   - [Reducer](https://github.com/undefinedschool/notes-redux#reducer)
   - [Store](https://github.com/undefinedschool/notes-redux#store)
-    - [Accediendo al _state_]()
-    - [Actualizando el _state_]()
-    - [Escuchando cambios en el _state_]()
-  - [Dispatch](https://github.com/undefinedschool/notes-redux#dispatch)
-- [Flujo de datos unidireccional (one-way data flow)]()  
+    - [Accediendo al _state_](https://github.com/undefinedschool/notes-redux#accediendo-al-state)
+    - [Actualizando el _state_](https://github.com/undefinedschool/notes-redux#actualizando-el-state)
+    - [Escuchando cambios en el _state_](https://github.com/undefinedschool/notes-redux#escuchando-cambios-en-el-state)
+- [Flujo de datos unidireccional (one-way data flow)](https://github.com/undefinedschool/notes-redux#flujo-de-datos-unidireccional-one-way-data-flow)  
+- [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
 - [Redux vs Context API](https://github.com/undefinedschool/notes-redux#redux-vs-context-api)
 - [Redux vs Hooks](https://github.com/undefinedschool/notes-redux#redux-vs-hooks)
-- [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
 
 ---
 
@@ -68,7 +67,7 @@ Por lo tanto, sólo deberíamos usar Redux si manejar el state local de los comp
 
 El estado completo de la aplicación se encuentra representado por un gran objeto de JavaScript, conocido como _state_ o _state tree_.
 
-Decimos que **el _state_ es _inmutable_ porque se trata de un objeto de _sólo lectura_**: no se puede modificar directamente, sino sólo a través del _dispatch_ de una [acción]().
+Decimos que **el _state_ es _inmutable_ porque se trata de un objeto de _sólo lectura_**: no se puede modificar directamente, sino sólo a través del _dispatch_ de una [acción](https://github.com/undefinedschool/notes-redux#actions).
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
@@ -224,15 +223,23 @@ unsubscribe();
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
-### Dispatch
+## Flujo de datos unidireccional (one-way data flow)
 
-(WIP)
+Al igual que en React, en Redux [el flujo de datos es siempre _unidireccional_](https://github.com/undefinedschool/notes-react-principles#flujo-de-datos-unidireccional-one-way-data-flow).
+
+![Redux Flow](https://www.datocms-assets.com/639/1556116473-1.png)
+
+1. Llamamos al método `dispatch()` del _Store_, pasándole una acción. 
+2. El Store se encarga de pasar la acción al _reducer_, generando así el nuevo estado.
+3. El Store actualiza el _state_ y le avisa a todos los _listeners_ suscriptos.
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
-## Flujo de datos unidireccional (one-way data flow)
+## Redux Toolkit
 
-Al igual que en React, en Redux [el flujo de datos es _unidireccional_](https://github.com/undefinedschool/notes-react-principles#flujo-de-datos-unidireccional-one-way-data-flow)
+(WIP)
+
+> 👉 **Ver [Redux Toolkit](https://redux-toolkit.js.org/)
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
@@ -245,14 +252,6 @@ Al igual que en React, en Redux [el flujo de datos es _unidireccional_](https://
 ## Redux vs Hooks
 
 (WIP)
-
-[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
-
-## Redux Toolkit
-
-(WIP)
-
-> 👉 **Ver [Redux Toolkit](https://redux-toolkit.js.org/)
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
