@@ -28,12 +28,13 @@
     - [Actualizando el _state_](https://github.com/undefinedschool/notes-redux#actualizando-el-state)
     - [Escuchando cambios en el _state_](https://github.com/undefinedschool/notes-redux#escuchando-cambios-en-el-state)
 - [Flujo de datos unidireccional (one-way data flow)](https://github.com/undefinedschool/notes-redux#flujo-de-datos-unidireccional-one-way-data-flow)
+- [Redux vs React Local State](https://github.com/undefinedschool/notes-redux#redux-vs-react-local-state)
 - [Redux Developer Tools](https://github.com/undefinedschool/notes-redux#redux-developer-tools)
 - [React Redux](https://github.com/undefinedschool/notes-redux#react-redux)
-- [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
-- [Testing](https://github.com/undefinedschool/notes-redux#testing)
 - [Redux vs Context API](https://github.com/undefinedschool/notes-redux#redux-vs-context-api)
 - [Redux vs Hooks](https://github.com/undefinedschool/notes-redux#redux-vs-hooks)
+- [Redux Toolkit](https://github.com/undefinedschool/notes-redux#redux-toolkit)
+- [Testing](https://github.com/undefinedschool/notes-redux#testing)
 
 ---
 
@@ -283,6 +284,24 @@ El flujo o _lifecycle_ en Redux entonces es el siguiente:
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
+## Redux vs React Local State
+
+En React, el _state_
+
+- es [_local_](https://github.com/undefinedschool/notes-react-basics#state) (por lo tanto, descentralizado), propio de cada componente.
+- si necesitamos compartir el _state_ de un componente con otros, se pasa por [_props_](https://github.com/undefinedschool/notes-react-basics#props) (siempre hacia _child components_).
+- es _mutable_.
+
+En Redux, el _state_
+
+- es _global_ (por lo tanto, centralizado) y está contenido en el [Store](https://github.com/undefinedschool/notes-redux#store).
+- si un componente necesita tener acceso a algún valor del _state_, puede simplemente _suscribirse_ al _Store_ para obtenerlo, sin tener que pasar _props_ innecesariamente entre componentes.
+- es [_inmutable_](https://github.com/undefinedschool/notes-redux#inmutabilidad).
+
+> 👉 Algo importante a tener en cuenta es que **utilizar Redux no implica pasar a manejar todo el _state_ con esta solución**. Necesitamos determinar qué partes del _state_ pasarán a estar almacenadas en el Store de Redux y qué partes continuarán en el state local de cada [React Component](https://github.com/undefinedschool/notes-react-basics#react-component).
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
 ## Redux Developer Tools
 
 Tener un único store inmutable nos permite acceder a features como _time traveling_, _hot module reloading_ y simplifica el debugging. 
@@ -320,6 +339,18 @@ Algunas de las acciones de _time travelling_ que podemos realizar incluyen
 
 [↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
 
+## Redux vs Context API
+
+(WIP)
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
+## Redux vs Hooks
+
+(WIP)
+
+[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
+
 ## Redux Toolkit
 
 (WIP)
@@ -331,18 +362,6 @@ Algunas de las acciones de _time travelling_ que podemos realizar incluyen
 ## Testing
 
 [notas aparte]
-
-(WIP)
-
-[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
-
-## Redux vs Context API
-
-(WIP)
-
-[↑ Ir al inicio](https://github.com/undefinedschool/notes-redux#contenido)
-
-## Redux vs Hooks
 
 (WIP)
 
