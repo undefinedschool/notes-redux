@@ -79,7 +79,7 @@ Decimos que **el _state_ es _inmutable_ porque se trata de un objeto de _sólo l
 
 **Una _acción_ es un objeto JavaScript que describe un cambio y cuenta con la información mínima necesaria para representarlo (es minimal)**.
 
-El único requisito de este tipo de objetos es tener una propiedad `type`, cuyo valor suele ser un _string_.
+> 👉 **El único requisito de este tipo de objetos es tener una propiedad `type`, cuyo valor suele ser un _string_**.
 
 Ejemplo sólo con `type`
 
