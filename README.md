@@ -1,6 +1,5 @@
 # ![Redux](https://i.imgur.com/3Y4n7hz.png)
 
-
 <div align="center">  
   <p align="center">
   <sub>Hola! Soy Nico (<strong>nhsz</strong>), <strong>Dev Full Stack JavaScript y mentor</strong>.</sub>
